@@ -1,0 +1,34 @@
+extends layout
+
+mixin fileLink(cdir, item)
+  if !cdir.endsWith('/')
+    - var link = cdir + '/'
+  else
+    - var link = cdir
+  td
+    if item.type == '-'
+        a.icon.file(href='#{link}#{item.name}?type=#{item.type}')= item.name
+    else if item.type == 'd'
+      a.icon.dir(href='#{link}#{item.name}?type=#{item.type}')= item.name
+
+mixin fileSize(item)
+  if item.type == '-'
+    td.detailsColumn= item.humanizeFileSize
+  else
+    td.detailsColumn
+
+mixin fileModifiedDate(item)
+    td.detailsColumn= item.humanizeDate
+
+block content
+  h1#header Index of #{currDir}
+  table
+    tr#theader.header
+      th Name
+      th.detailsColumn Size
+      th.detailsColumn Date Modified
+    for item in fileList
+      tr
+        +fileLink(currDir, item)
+        +fileSize(item)
+        +fileModifiedDate(item)
