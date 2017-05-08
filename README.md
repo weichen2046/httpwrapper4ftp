@@ -16,6 +16,6 @@ not find an easy way to get a ftp proxy works for me, so I developed this
   - `npm install` or `yarn install` to init project
   - config your ftp server option in [ftpconfig.js][ftpconfig.js]
   - `npm start` or `yarn start` to run express server
-  - open browser to navigate `http://localost:3000`, replace `localst` with the host of your http server
+  - open browser to navigate `http://locahost:3000`, replace `localhost` with your http server's hostname
   
 [ftpconfig.js]: ./config/ftpconfig.js
